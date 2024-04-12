@@ -1,12 +1,14 @@
 <?php
 //DB Settings
-$dbhost = "localhost"; 
-$dbname = "desafio_revvo";
-$dbuser = "root";
-$dbpass = "root";
+session_start();
+
+$dbHost = "localhost"; 
+$dbName = "desafio_revvo";
+$dbUser = "root";
+$dbPass = "root";
 
 //Host Settings
-$server_url = 'http://localhost/';
-$base_url = $server_url.'desafio_revvo/';
+$serverUrl = 'http://localhost/';
+$baseUrl = $serverUrl.'desafio_revvo/';
 
 include 'connect.php';

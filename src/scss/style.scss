@@ -1,5 +1,60 @@
 html,
 body {
   height: 100%;
-  font-family: 'GFS Neohellenic', sans-serif;
+  font-family: 'Arimo', sans-serif;
+}
+
+.pt-header {
+  padding-top: 17px;
+}
+.p-header
+{
+  padding-top: 17px;
+  padding-bottom: 17px;
+}
+
+header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  background: #fff;
+}
+
+header .logoHeader {
+  height: 38px;
+  margin: 5px 0;
+}
+
+.search-group {
+  position: relative;
+}
+
+.search-group .form-control {
+  background: #efefef;
+  border-radius: 40px;
+  color: #333;
+  padding: 11px 22px !important;
+  padding-right: 59.3px !important;
+}
+
+.search-group button {
+  border: none !important;
+  background: transparent;
+  height: 47.3px;
+  width: 47.3px;
+  color: #919191;
+  transition: all 500ms ease 0s;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.search-group .form-control:not(:empty) + .search-group button {
+  color: #333 !important;
+}
+
+.logarsbtn {
+  height: 47.3px;
 }
