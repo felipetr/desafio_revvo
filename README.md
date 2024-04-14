@@ -4,6 +4,11 @@
 
 Este é o repositório do Desafio Revvo, desenvolvido por Felipe Travassos.
 
+## Visualização do Exemplo
+
+Você pode visualizar um exemplo do Desafio Revvo em [https://desafiorevvo.felipetravassos.com](https://desafiorevvo.felipetravassos.com).
+
+
 ## Instruções de Configuração
 
 1. Execute o arquivo `desafio_revvo.sql` no seu banco de dados SQL para criar as tabelas necessárias.
