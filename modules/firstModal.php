@@ -5,7 +5,7 @@
         <button type="button" class="btn-close-modal" data-bs-dismiss="modal" aria-label="Fechar">
           <i class="fas fa-times"></i>
         </button>
-        <img class="coverModal" src="<?php echo resizeImage(distUrl().'/uploads/modal.jpg', 898, 264); ?>" alt="EGESTAS TORTOR VULPUTATE" title="EGESTAS TORTOR VULPUTATE">
+        <img class="coverModal" src="<?php echo resizeImage(baseUrl().'/uploads/modal.jpg', 898, 264); ?>" alt="EGESTAS TORTOR VULPUTATE" title="EGESTAS TORTOR VULPUTATE">
         <div class="modalcont">
           <h2>EGESTAS TORTOR VULPUTATE</h2>
           <p class="text-secondary">Aenean eu leo quam. Pellentesque omare sem lacinia quam venenatis vestibulum. Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui. Cras</p>

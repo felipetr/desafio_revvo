@@ -1,7 +1,7 @@
 <?php
 $conn = connectServer();
 
-$sql = "SELECT * FROM cursos WHERE destaque = 1 ORDER BY `createdDate`  DESC";
+$sql = "SELECT * FROM cursos WHERE destaque = 1 ORDER BY `createdDate` DESC LIMIT 4";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -35,7 +35,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <h2 class="toUpper"><?php echo $course['title']; ?></h2>
                                             <div class="resume"><?php echo $course['text']; ?></div>
                                             <a href="<?php
-                                                        echo distUrl() . 'curso/' . $course['slug'];
+                                                        echo baseUrl() . 'curso/' . $course['slug'];
                                                         ?>" class="seeMore">VER CURSO</a>
                                         </div>
                                     </div>
@@ -44,10 +44,10 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                     <img title="<?php echo $course['title']; ?>" src="<?php
-                                                                        echo resizeImage(distUrl() . '/uploads/' . $course['image'], 1440, 325);
+                                                                        echo resizeImage(baseUrl() . '/uploads/' . $course['image'], 1440, 325);
                                                                         ?>" class="d-none d-md-block w-100" alt="<?php echo $course['title']; ?>">
                     <img title="<?php echo $course['title']; ?>" src="<?php
-                                                                        echo resizeImage(distUrl() . '/uploads/' . $course['image'], 800, 450);
+                                                                        echo resizeImage(baseUrl() . '/uploads/' . $course['image'], 800, 450);
                                                                         ?>" class="d-block d-md-none w-100" alt="<?php echo $course['title']; ?>">
 
                 </div>

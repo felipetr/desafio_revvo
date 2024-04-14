@@ -1,6 +1,72 @@
 <?php
-require_once 'settings.php';
+require_once 'connect.php';
+require_once 'modules.php';
 
+$parentDir = dirname(__DIR__);
+
+$dotenv = parse_ini_file($parentDir . '/.env');
+
+foreach ($dotenv as $key => $value) {
+    putenv("$key=$value");
+}
+
+
+function baseUrl()
+{
+    return getenv('BASE_URL');
+}
+
+function serverPath()
+{
+    $url = getenv('BASE_URL');
+    $parsedUrl = parse_url($url);
+$relativePath = $parsedUrl['path'];
+$relativePath = ltrim($relativePath, '/');
+$pathParts = explode('/', $relativePath);
+if (empty($pathParts)) {
+    $parentPath = '../';
+} else {
+    array_pop($pathParts);
+    $parentPath = '/' . implode('/', $pathParts);
+}
+
+return $parentPath;
+}
+
+
+
+function pagination($page, $limit = null) {
+    if ($limit === null) {
+        $limit = getenv('PAGINATION_DEFAULT_LIMIT');
+    }
+
+    return array(
+        'limit' => $limit,
+        'page' => $page,
+        'offset' => ($page - 1) * $limit,
+    );
+}
+
+function  mountPaginationUrl($url, $i, $gets = null)
+{
+    $response = baseUrl().$url.'/'.$i;
+    
+    if($gets)
+    {
+        $response .= "?";
+        $i = 0;
+        foreach ($gets as $key => $value) {
+            if($i)
+            {
+                $response .= '&';
+            }
+            $i++;
+            $response .= $key.'='.$value;
+        }
+    }
+    return $response;
+
+}
 function getModule($moduleName, $props = null)
 {
     $modulePath = dirname(__DIR__) . '/modules/' . $moduleName . '.php';
@@ -10,7 +76,7 @@ function getModule($moduleName, $props = null)
         if ($props !== null) {
             extract($props);
         }
-        require_once $modulePath;
+        require $modulePath;
     } else {
         throw new Exception("Module file '$modulePath' not found.");
     }
@@ -64,27 +130,57 @@ function getUrlArray($url)
 }
 function connectServer()
 {
-    global $dbHost;
-    global $dbName;
-    global $dbUser;
-    global $dbPass;
+    $dbHost = getenv('DB_HOST');
+    $dbUser = getenv('DB_USER');
+    $dbPass = getenv('DB_PASS');
+    $dbName = getenv('DB_NAME');
     try {
         $conn = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
-      
+
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         return $conn;
-      
-      
-      
-      } catch(PDOException $e) {
-        echo  "<script>console.log('Database connection failed: ".$e->getMessage()."')</script>";
-      }
-      
+    } catch (PDOException $e) {
+        echo  "<script>console.log('Database connection failed: " . $e->getMessage() . "')</script>";
+    }
+}
+
+
+function getTitle($url)
+{
+    $modules = modules();
+    if (strstr($url, '/')) {
+        $urlArr = explode('/', $url);
+        foreach ($urlArr as $key => $value) {
+            if ($key) {
+                $urlArr[$key] = '$' . $key;
+            }
+            $url = implode('/', $urlArr);
+        }
+    }
+    if(isset($modules[$url]))
+    {
+        return  $modules[$url]['title'];
+    }else{
+        return $modules['404']['title'];
+    }
+}
+function getCourseDataBySlug($slug)
+{
+    $conn = connectServer();
+
+    $sql = "SELECT * FROM cursos WHERE slug = :slug";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':slug', $slug);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $results[0];
 
 }
+
 function loadContent($url)
 {
+
 
     if (strstr($url, '/')) {
         $urlArr = explode('/', $url);
@@ -96,15 +192,14 @@ function loadContent($url)
         }
     }
 
-    $modules = array(
-        '' => 'homePage',
-        'profile' => 'profilePage',
-        'curso/$1' => 'coursePage'
-    );
+    $modules = modules();
 
     if (array_key_exists($url, $modules)) {
-        getModule($modules[$url]);
-    } else {
-        getModule('404');
+
+        getModule($modules[$url]['module']);
+    } else {?>
+         <meta http-equiv="refresh" content="0; URL=<?php echo baseUrl().'404' ?>">
+    <?php
+        exit;
     }
 }
