@@ -9,6 +9,18 @@ $dbPass = "root";
 
 //Host Settings
 $serverUrl = 'http://localhost/';
-$baseUrl = $serverUrl.'desafio_revvo/';
 
-include 'connect.php';
+function baseUrl()
+{
+    global $serverUrl;
+    return $serverUrl.'desafio_revvo/';
+}
+
+function distUrl()
+{
+    global $serverUrl;
+    return $serverUrl.'desafio_revvo/dist/';
+}
+//Includes
+require_once 'connect.php';
+

@@ -58,3 +58,38 @@ header .logoHeader {
 .logarsbtn {
   height: 47.3px;
 }
+
+.avatar {
+  border-radius: 50px;
+  border: #919191 2px solid;
+  float: left;
+}
+
+.welcome {
+  display: inline-block;
+  margin-left: 19px;
+  color: #606060;
+}
+
+.welcome small {
+  color: #919191;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.dropdown-toggle {
+  padding-right: 18px;
+}
+
+.dropdown-toggle::after {
+  vertical-align: 0 !important;
+  position: absolute;
+  top: calc(50% - 2px);
+  right: 0;
+}
+
+.contentbox {
+  margin-top: 99px;
+}
