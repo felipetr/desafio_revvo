@@ -2,6 +2,13 @@
 require_once 'connect.php';
 require_once 'modules.php';
 
+if (session_status() === PHP_SESSION_NONE && !isset($_SESSION)) {    
+    
+    session_start();
+    session_destroy();    
+
+}
+
 $parentDir = dirname(__DIR__);
 
 $dotenv = parse_ini_file($parentDir . '/.env');
@@ -13,24 +20,26 @@ foreach ($dotenv as $key => $value) {
 
 function baseUrl()
 {
-    return getenv('BASE_URL');
+    return getenv('BASE_URL').'/';
 }
 
 function serverPath()
 {
-    $url = getenv('BASE_URL');
-    $parsedUrl = parse_url($url);
-$relativePath = $parsedUrl['path'];
-$relativePath = ltrim($relativePath, '/');
-$pathParts = explode('/', $relativePath);
-if (empty($pathParts)) {
-    $parentPath = '../';
-} else {
-    array_pop($pathParts);
-    $parentPath = '/' . implode('/', $pathParts);
-}
+   
+    $baseUrl =  rtrim(getenv('BASE_URL'));
+    $urlWithoutProtocol = preg_replace('#^https?://#', '', $baseUrl);
+    if(strpos($urlWithoutProtocol, $baseUrl) === 0)
+    {
+        return '../';
+    }else
+    {
+        $baseUrlArr =  explode('/',getenv('BASE_URL'));
+        array_pop($baseUrlArr);
+        return  implode('/',$baseUrlArr).'/';
 
-return $parentPath;
+
+    }
+
 }
 
 
@@ -134,6 +143,7 @@ function connectServer()
     $dbUser = getenv('DB_USER');
     $dbPass = getenv('DB_PASS');
     $dbName = getenv('DB_NAME');
+
     try {
         $conn = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
 
@@ -141,7 +151,8 @@ function connectServer()
 
         return $conn;
     } catch (PDOException $e) {
-        echo  "<script>console.log('Database connection failed: " . $e->getMessage() . "')</script>";
+        echo  'Database connection failed: ' . htmlentities($e->getMessage());
+        exit();
     }
 }
 

@@ -1,7 +1,18 @@
 <?php
 
-include('settings.php');
+include('connect.php');
 
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+
+if (isset($_SESSION['user'])) {
+  
+  unset($_SESSION['user']);
+
+session_destroy();
+
+}
 $email = trim($_POST['email']);
 $password = sha1(trim($_POST['password']));
 

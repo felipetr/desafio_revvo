@@ -32,7 +32,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="col-12 col-md-4">
                                     <div class="p-relative">
                                         <div class="sliderBox">
-                                            <h2 class="toUpper"><?php echo $course['title']; ?></h2>
+                                            <h2 class="toUpper ret"><?php echo $course['title']; ?></h2>
                                             <div class="resume"><?php echo $course['text']; ?></div>
                                             <a href="<?php
                                                         echo baseUrl() . 'curso/' . $course['slug'];
