@@ -1,5 +1,7 @@
-
-<div class="container py-5">
+<?php
+// coursesList
+checkLogin(); 
+?><div class="container py-5">
     <h1 class="title-page medium-gray-color toUpper">// Cursos</h1>
     <hr class="separator">
     <div class="listCourses">

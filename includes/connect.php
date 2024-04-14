@@ -1,4 +1,6 @@
 <?php
+// connect
+
 $parentDir = dirname(__DIR__);
 
 $dotenv = parse_ini_file($parentDir . '/.env');

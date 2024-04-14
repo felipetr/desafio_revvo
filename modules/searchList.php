@@ -1,4 +1,8 @@
+<?php
+// searchList
 
+checkLogin(); 
+?>
 <div class="container py-5">
     <h1 class="title-page medium-gray-color toUpper">// PESQUISAR CURSOS <small><i class="fas fa-chevron-right"></i> Procurando por: "<?php echo $_GET['s']; ?>"</small></h1>
     <hr class="separator">

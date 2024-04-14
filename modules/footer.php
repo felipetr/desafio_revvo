@@ -1,4 +1,6 @@
-</div>
+<?php
+// footer
+?></div>
 <footer>
   <div class="footer">
     <div class="container">

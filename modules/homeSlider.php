@@ -1,4 +1,6 @@
 <?php
+// homeSlider
+
 $conn = connectServer();
 
 $sql = "SELECT * FROM cursos WHERE destaque = 1 ORDER BY `createdDate` DESC LIMIT 4";

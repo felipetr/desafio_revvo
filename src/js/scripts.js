@@ -1,4 +1,4 @@
-const loginForm = document.getElementById("loginForm");
+
 
 function showFirstModal()
 {
@@ -10,6 +10,8 @@ if (localStorage.getItem('modalShowed') === null) {
     showFirstModal();
     localStorage.setItem('modalShowed',true);
 }
+
+const loginForm = document.getElementById("loginForm");
 
 loginForm.addEventListener("submit", function (event) {
   event.preventDefault();

@@ -1,5 +1,7 @@
 
-<div class="container py-5">
+<?php
+// coursesHomeList
+?><div class="container py-5">
     <h4 class="medium-gray-color">MEUS CURSOS</h4>
     <hr class="separator">
     <div class="listCourses">

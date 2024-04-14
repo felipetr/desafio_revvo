@@ -1,4 +1,5 @@
 <?php
+// userDropdown
 
 if (isset($_SESSION['user'])) {
   $user = $_SESSION['user'];
@@ -6,17 +7,17 @@ if (isset($_SESSION['user'])) {
 
   <div class="dropdown">
     <div class="w-100 dropdown-toggle text-center p-relative" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      <img class="avatar" src="<?php echo resizeImage(baseUrl() . '/uploads/' . $user['avatar'], 43, 43); ?>" alt="<?php echo $user['name']; ?>" title="<?php echo $user['name']; ?>">
+      <img id="avatar-header" class="avatar" src="<?php echo resizeImage(baseUrl() . '/uploads/' . $user['avatar'], 43, 43); ?>" alt="<?php echo $user['name']; ?>" title="<?php echo $user['name']; ?>">
 
       <div class="welcome d-none d-sm-inline-block">
-        <small><?php
+        <small id="welcome-header"><?php
                 if ($user['gender']) {
                   echo 'Seja bem-vind' . $user['gender'];
                 } else {
                   echo 'Boas vindas';
                 }
                 ?></small>
-        <div><?php echo $user['name']; ?></div>
+        <div id="name-header"><?php echo $user['name']; ?></div>
       </div>
     </div>
     <ul class="dropdown-menu dropdown-menu-end">

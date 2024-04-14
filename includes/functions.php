@@ -1,13 +1,7 @@
 <?php
-require_once 'connect.php';
+// functions
 require_once 'modules.php';
 
-if (session_status() === PHP_SESSION_NONE && !isset($_SESSION)) {    
-    
-    session_start();
-    session_destroy();    
-
-}
 
 $parentDir = dirname(__DIR__);
 
@@ -15,6 +9,17 @@ $dotenv = parse_ini_file($parentDir . '/.env');
 
 foreach ($dotenv as $key => $value) {
     putenv("$key=$value");
+}
+
+function checkLogin()
+{
+    if (!isset($_SESSION['user'])) {
+        ?>
+        <meta http-equiv="refresh" content="0; URL=<?php echo baseUrl(); ?>">
+        <?php
+        exit();
+      }
+    
 }
 
 

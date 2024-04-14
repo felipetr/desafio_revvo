@@ -1,4 +1,6 @@
-<!doctype html>
+<?php
+// header
+?><!doctype html>
 <html lang="pt-BR">
 
 <head>
