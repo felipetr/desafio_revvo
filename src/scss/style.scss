@@ -137,12 +137,11 @@ header .logoHeader {
 }
 
 .socialIcons a {
-  display: flex;
+  display: inline-block;
   text-align: center;
   justify-content: center;
   height: 36px;
   width: var(--big);
-  text-align: center;
   color: #fff !important;
   font-size: var(--small);
   border-radius: 50%;
@@ -150,6 +149,10 @@ header .logoHeader {
   text-decoration: none;
   color: inherit;
   transition: all 0.5s ease 0s;
+}
+.socialIcons a i
+{
+  line-height: 36px;
 }
 
 .socialIcons a:hover {
