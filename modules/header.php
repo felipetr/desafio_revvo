@@ -3,27 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Desafio Revvo<?php 
-    $url = '';
-    if(isset($_GET['url'])) {
-        $url = $_GET['url'];
-        $title = getTitle($url);
-        if (strstr($url, '/')) {
-            $urlArr = explode('/', $url);
-            if($urlArr[0] == 'curso')
-            {
-            $course = getCourseDataBySlug($urlArr[1]);
-            $title .= " | ".$course['title'];
-            }
-        }
-    }
-    if(isset($_GET['s']))
-    {
-        $title .= " | ".$_GET['s'];
-    }
-    
-    
-    if (isset($title)) {
+    <title>Desafio Revvo<?php
+                        $url = '';
+                        if (isset($_GET['url'])) {
+                            $url = $_GET['url'];
+                            $title = getTitle($url);
+                            if (strstr($url, '/')) {
+                                $urlArr = explode('/', $url);
+                                if ($urlArr[0] == 'curso') {
+                                    $course = getCourseDataBySlug($urlArr[1]);
+                                    $title .= " | " . $course['title'];
+                                }
+                            }
+                        }
+                        if (isset($_GET['s'])) {
+                            $title .= " | " . $_GET['s'];
+                        }
+
+
+                        if (isset($title)) {
                             echo ' | ' . $title;
                         } ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,10 +38,10 @@
         const serverPath = "<?php echo serverPath(); ?>";
     </script>
     <header class="pt-header">
-    <div class="d-block d-md-none">
-     <?php  getModule('searchForm'); ?>
-    </div>
-                    
+        <div class="d-block d-md-none">
+            <?php getModule('searchForm'); ?>
+        </div>
+
         <div class="container">
             <div class="row">
                 <div class="col-7 p-header">
@@ -52,13 +50,12 @@
                     </a>
                 </div>
                 <div class="d-none d-md-block col-3 border-end border-primary-subtle p-header">
-                 <?php  getModule('searchForm'); ?>
+                    <?php getModule('searchForm'); ?>
                 </div>
-                <div class="col-5 col-md-2 p-header">
-                    <?php  getModule('userDropdown'); ?>
+                <div class="col-5 col-md-2 p-header text-end">
+                    <?php getModule('userDropdown'); ?>
                 </div>
             </div>
         </div>
     </header>
     <div class="contentbox">
-       

@@ -2,8 +2,6 @@
 
 include_once '../includes/functions.php';
 
-
-
 $url = '';
 if(isset($_GET['url'])) {
     $url = $_GET['url'];
