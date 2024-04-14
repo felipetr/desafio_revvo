@@ -23,8 +23,8 @@ if(isset($_SESSION['user']))
   </div>
   </div>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="<?php echo distUrl(); ?>profile">Meu Perfil</a></li>
-    <li><a class="dropdown-item" id="logoutBtn">Sair</a></li>
+    <li><a class="dropdown-item" href="<?php echo distUrl(); ?>profile"><i class="fas fa-user"></i> Perfil</a></li>
+    <li><a class="dropdown-item" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
   </ul>
 </div>
 

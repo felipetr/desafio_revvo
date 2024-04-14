@@ -1,1 +1,5 @@
-Estou na home
+<?php 
+getModule('homeSlider');
+
+getModule('coursesList');
+?>
