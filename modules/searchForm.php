@@ -1,3 +1,6 @@
+<?php
+// searchForm
+?>
 <form action="<?php echo baseUrl(); ?>search/1" method="get">
                         <div class="search-group">
 

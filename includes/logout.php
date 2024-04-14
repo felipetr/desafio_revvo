@@ -1,8 +1,7 @@
 <?php
+// logout
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-  }
+  session_start();
   session_destroy();
 
 $response = array('success' => true);

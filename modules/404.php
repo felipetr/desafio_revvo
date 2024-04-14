@@ -1,4 +1,6 @@
-<div class="container p-4">
+<?php
+// 404
+?><div class="container p-4">
     <div class="alert border-dark-warning b-radius alert-warning text-center">
         <div class="p-4">
             <h1 class="icon-warning">

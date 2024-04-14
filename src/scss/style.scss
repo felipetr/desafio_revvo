@@ -79,9 +79,16 @@ header .logoHeader {
 }
 
 .avatar {
-  border-radius: 50px;
+  border-radius: 500px;
   border: var(--light-gray) 2px solid;
   float: left;
+}
+.avatar-profile
+
+{
+  max-width: 100%;
+  border-radius: 500px;
+  border: var(--light-gray) 2px solid;
 }
 
 .welcome {
@@ -430,7 +437,7 @@ pb-30 {
 .seeMoreCurs:hover {
   background: var(--green-btn-hover);
 }
-.icon-warning {
+.icon-warning, .icon-light {
   font-size: 80px;
 }
 .b-radius {
@@ -446,6 +453,18 @@ pb-30 {
 .btn-border-dark-warning:hover {
   color: #fff;
   background: #664d03;
+}
+
+.alert-light {
+  border-color: #e2e2e2;
+}
+.btn-border-dark-light {
+  border-color: #636464 !important;
+  color: #636464;
+}
+.btn-border-dark-light:hover {
+  color: #fff;
+  background: #636464;
 }
 .btn-rounded {
   border-radius: 55px;
@@ -465,6 +484,10 @@ pb-30 {
 
 .pagination-box li span {
   opacity: 0.4;
+}
+b
+{
+  font-weight: bolder;
 }
 .pagination-box li span,
 .pagination-box li a {
@@ -486,6 +509,11 @@ pb-30 {
   color: var(--lighter-gray) !important;
   background: var(--dark-gray) !important;
   border: 1px solid var(--dark-gray) !important;
+}
+.form-control-disabled
+{
+  background-color: #e9ecef !important;
+  color: var(--medium-gray) !important;
 }
 @media (max-width: 991.98px) {
   .sliderBox {

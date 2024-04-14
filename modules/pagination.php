@@ -1,6 +1,5 @@
 <?php
-
-
+// pagination
 
 $localurl = explode('/', $props['gets']['url'])[0];
 unset($props['gets']['url']);
