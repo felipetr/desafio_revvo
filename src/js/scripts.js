@@ -25,7 +25,7 @@ if (logoutBtn) {
   logoutBtn.addEventListener("click", function (event) {
     event.preventDefault();
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", baseUrl + "includes/logout.php", true);
+    xhr.open("POST", serverPath + "includes/logout.php", true);
     xhr.setRequestHeader("Content-Type", "application/json");
 
     xhr.onload = function () {
@@ -58,7 +58,7 @@ function logarSe(email, password, rememberMe) {
   document.getElementById("loginMessage").style.display = "none";
 
   const xhr = new XMLHttpRequest();
-  xhr.open("POST", baseUrl + "includes/logarSe.php", true);
+  xhr.open("POST", serverPath + "includes/logarSe.php", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
   xhr.onload = function () {

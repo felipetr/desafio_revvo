@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-12 col-md-4">
           <div class="logoFooterBox">
-            <img src="<?php echo distUrl(); ?>assets/images/logo_footer.svg" class="logoFooter" alt="LEO">
+            <img src="<?php echo baseUrl(); ?>assets/images/logo_footer.svg" class="logoFooter" alt="LEO">
             <p>Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros</p>
           </div>
         </div>
@@ -71,7 +71,7 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-<script src="<?php echo distUrl(); ?>assets/js/scripts.js?v=<?php echo time() ?>"></script>
+<script src="<?php echo baseUrl(); ?>assets/js/scripts.js?v=<?php echo time() ?>"></script>
 </body>
 
 </html>

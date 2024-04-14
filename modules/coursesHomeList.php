@@ -1,41 +1,15 @@
 
 <div class="container py-5">
-    <h1 class="title-page medium-gray-color toUpper">// Cursos</h1>
+    <h4 class="medium-gray-color">MEUS CURSOS</h4>
     <hr class="separator">
     <div class="listCourses">
         <div class="row">
-            <?php 
+            <?php $conn = connectServer();
 
-
-
-$conn = connectServer();
-
-
-// Consulta para contar o total de resultados
-$countSql = "SELECT COUNT(*) AS total FROM cursos";
-
-$stmt = $conn->prepare($countSql);
-$stmt->execute();
-
-$props = getUrlArray($_GET['url']);
-$pagination = pagination($props[0]);
-
-
-
-$pagination['totalResults'] = $stmt->fetchColumn();
-
-
-
-$sql = "SELECT * FROM cursos
-        ORDER BY `createdDate`
-        LIMIT :limit OFFSET :offset";
-
+$sql = "SELECT * FROM cursos ORDER BY `createdDate` DESC LIMIT 11";
 $stmt = $conn->prepare($sql);
-$stmt->bindParam(':limit', $pagination['limit'], PDO::PARAM_INT); 
-$stmt->bindParam(':offset', $pagination['offset'], PDO::PARAM_INT); 
 $stmt->execute();
-$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC); 
 for ($i = 0; $i < count($results); $i++) { 
     $course = $results[$i];
     ?>
@@ -69,13 +43,19 @@ for ($i = 0; $i < count($results); $i++) {
             </div></div>
             <?php } ?>
             
-            
+            <div class="col-6 col-md-4 col-lg-3 pb-30"><div class="autoH pb-30">
+                <a class="newCourse" href="<?php echo baseUrl().'novo-curso'; ?>">
+                <div>
+                <img title="Adicionar Curso" src="<?php
+                                echo baseUrl() . 'assets/images/add_course.svg';
+                                ?>"  alt="Adicionar Curso">
+                                <h4 class="toUpper">Adicionar<br><small>curso</small>
+                                </h4>
+                </div>
+                </a>
+            </div>
+            </div>
 
         </div>
     </div>
-    <?php
-    $pagination['gets'] = $_GET;
-
-    getModule('pagination', $pagination); ?>
-    
 </div>

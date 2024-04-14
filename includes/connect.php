@@ -1,5 +1,9 @@
 <?php
 
+$dbHost = getenv('DB_HOST');
+$dbUser = getenv('DB_USER');
+$dbPass = getenv('DB_PASS');
+$dbName = getenv('DB_NAME');
 
 try {
     $conn = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
