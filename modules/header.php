@@ -22,7 +22,7 @@
     <header class="pt-header">
         <div class="container">
             <div class="row">
-                <div class="col-6 col-md-7 p-header">
+                <div class="col-7 p-header">
                     <a href="<?php echo distUrl(); ?>" title="Desafio Revvo">
                         <img src="<?php echo distUrl(); ?>assets/images/logo_header.svg" class="logoHeader" alt="LEO">
                     </a>
@@ -39,7 +39,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-6 col-md-2 p-header">
+                <div class="col-5 col-md-2 p-header">
                     <?php
                     $props = array(
                         'teste' => 1,

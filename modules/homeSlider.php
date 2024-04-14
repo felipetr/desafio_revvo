@@ -12,10 +12,8 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php for ($i = 0; $i < count($results); $i++) {
                 $course = $results[$i];
             ?>
-                <button type="button"
-                data-bs-target="#homeSlider" data-bs-slide-to="<?php echo $i; ?>"
-                <?php
-                if (!$i) {  ?>class="active" aria-current="true" <?php } ?>aria-label="<?php echo $course['title']; ?>"></button>
+                <button type="button" data-bs-target="#homeSlider" data-bs-slide-to="<?php echo $i; ?>" <?php
+                                                                                                        if (!$i) {  ?>class="active" aria-current="true" <?php } ?>aria-label="<?php echo $course['title']; ?>"></button>
             <?php } ?>
         </div>
     </div>
@@ -47,7 +45,11 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <img title="<?php echo $course['title']; ?>" src="<?php
                                                                         echo resizeImage(distUrl() . '/uploads/' . $course['image'], 1440, 325);
-                                                                        ?>" class="d-block w-100" alt="<?php echo $course['title']; ?>">
+                                                                        ?>" class="d-none d-md-block w-100" alt="<?php echo $course['title']; ?>">
+                    <img title="<?php echo $course['title']; ?>" src="<?php
+                                                                        echo resizeImage(distUrl() . '/uploads/' . $course['image'], 800, 450);
+                                                                        ?>" class="d-block d-md-none w-100" alt="<?php echo $course['title']; ?>">
+
                 </div>
             </div>
         <?php

@@ -8,8 +8,7 @@
   --big: 38px;
 }
 
-.medium-gray-color
-{
+.medium-gray-color {
   color: var(--medium-gray);
 }
 html,
@@ -167,42 +166,40 @@ header .logoHeader {
   background-color: var(--medium-gray) !important;
   color: var(--lighter-gray) !important;
 }
-.slider-content
-{
+.slider-content {
   position: absolute;
   left: 0;
   right: 0;
   bottom: var(--big);
 }
 
-.sliderBox
-{
-
+.sliderBox {
   transition: all 500ms ease 0s;
   position: absolute;
   z-index: 3;
   left: 100%;
   width: calc(100% - var(--big));
-  background: rgba(0, 0, 0, .8);
+  background: rgba(0, 0, 0, 0.8);
   padding: var(--big);
   color: #fff;
   bottom: 0;
   font-size: 12px;
   opacity: 0;
 }
-.active .sliderBox
-{
+.active .sliderBox {
   left: var(--big);
 
-  opacity:1;
-  
+  opacity: 1;
 }
-h1, h2, h3, h4, h5, h6
-{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: bold;
 }
-.seeMore
-{
+.seeMore {
   text-decoration: none !important;
   color: #fff !important;
   border: #fff 2px solid;
@@ -214,13 +211,11 @@ h1, h2, h3, h4, h5, h6
   margin-top: var(--small);
   display: inline-block;
 }
-.seeMore:hover
-{
+.seeMore:hover {
   color: #000 !important;
   background: #fff !important;
 }
-.carousel-indicators-box
-{
+.carousel-indicators-box {
   text-align: center;
   position: absolute;
   bottom: -28px;
@@ -228,17 +223,14 @@ h1, h2, h3, h4, h5, h6
   right: 0;
   z-index: 4;
 }
-.toUpper
-{
+.toUpper {
   text-transform: uppercase;
 }
-.sliderBox .resume
-{
+.sliderBox .resume {
   height: 72px;
   overflow: hidden;
 }
-.carousel-indicators
-{
+.carousel-indicators {
   display: inline-block;
   position: relative !important;
   background: #fff;
@@ -247,25 +239,21 @@ h1, h2, h3, h4, h5, h6
   padding: 3px 7px 0;
 }
 
-.carousel-indicators button
-{
+.carousel-indicators button {
   width: 12px !important;
   height: 12px !important;
   border: none !important;
-  box-sizing:border-box !important;
+  box-sizing: border-box !important;
   margin: 0.7px !important;
   background: #cccacb !important;
   transition: all 500ms ease 0s;
   border-radius: 30px;
 }
-.carousel-indicators button.active
-{
+.carousel-indicators button.active {
   background: #4d4141 !important;
 }
-.modalbox
-{
-    
-  pointer-events:all !important;
+.modalbox {
+  pointer-events: all !important;
   width: 890px;
   margin: auto;
   margin-top: 60px;
@@ -275,8 +263,7 @@ h1, h2, h3, h4, h5, h6
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   background: #fff;
 }
-.btn-close-modal
-{
+.btn-close-modal {
   position: absolute;
   background: #fff !important;
   border: none;
@@ -285,23 +272,20 @@ h1, h2, h3, h4, h5, h6
   height: 60px;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   right: -30px;
-  top:-30px;
+  top: -30px;
   font-size: 30px;
   color: #ff9376;
 }
-.coverModal
-{
+.coverModal {
   width: 100%;
-  border-radius: 8px 8px 0 0 ;
+  border-radius: 8px 8px 0 0;
 }
-.modalcont
-{
+.modalcont {
   padding: 54px;
   text-align: center;
 }
 
-.btnmodal
-{
+.btnmodal {
   background: #1da2da;
   border: none;
   color: #fff !important;
@@ -315,102 +299,95 @@ h1, h2, h3, h4, h5, h6
   transition: all 500ms ease 0s;
   cursor: pointer;
 }
-.btnmodal:hover
-{
+.btnmodal:hover {
   background: #4fb0d9;
 }
-.listCourses
-{
+.listCourses {
   margin-bottom: -30px;
 }
-.courseCard
-{
+.courseCard {
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
   border-radius: 3px;
 }
-pb-30
-{
+pb-30 {
   padding-bottom: 30px !important;
 }
-.courseCard figure, .courseCard img
-{
+.courseCard figure,
+.courseCard img {
   border-radius: 3px 3px 0 0;
 }
-.loader
-{
+.loader {
   background: url(../images/loader.svg) no-repeat center center #dbdbdb;
 }
-.separator
-{
+.separator {
   margin: 0 0 30px;
-  opacity: .2;
+  opacity: 0.2;
 }
-.courseCardContent
-{
+.courseCardContent {
   height: 45px;
   overflow: hidden;
 }
-.courseslink
+.courseCardFooter
 {
+  height: 45px !important;
+}
+.courseslink {
   display: block;
   line-height: 36px;
   border-radius: 50px;
   background: #01a02a;
   text-align: center;
   color: #fff !important;
+  position: absolute;
+  bottom: 15px !important;
+  left: 15px;
+  right: 15px;
   text-decoration: none;
   transition: all 500ms ease 0s;
   font-size: 12px;
   font-weight: bold;
 }
-.courseslink:hover
-{
+.courseslink:hover {
   background: #02781f;
 }
-.etiqueta
-{
+.etiqueta {
   position: absolute;
   top: 0;
   right: 0;
   width: 74px;
 }
-.newCourse
-{
+.newCourse {
   border: 2px #000 dashed;
   display: block;
   display: flex;
   text-align: center;
-    justify-content: center;
-    text-decoration: none !important;
-    color: #000 !important;
-    align-items: center;
-    border-radius: 3px;
-    opacity: .3;
-    transition: all 500ms ease 0s;
+  justify-content: center;
+  text-decoration: none !important;
+  color: #000 !important;
+  align-items: center;
+  border-radius: 3px;
+  opacity: 0.3;
+  transition: all 500ms ease 0s;
 }
-.newCourse:hover{
-  opacity: .5;
+.newCourse:hover {
+  opacity: 0.5;
 }
 
-.newCourse img
-{
+.newCourse img {
   width: 111px !important;
   max-width: 100%;
   margin-bottom: 30px;
 }
-.newCourse div
-{
+.newCourse div {
   padding: 15px;
   padding-top: 45px;
   text-align: center;
   display: block;
 }
-.newCourse 
-.ret
-{
+.newCourse .ret {
   white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; 
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .autoH {
   height: 100%;
@@ -418,8 +395,22 @@ pb-30
 }
 
 .courseCard,
-.newCourse  {
-    height: calc(100% - 30px);
-    min-height: 0;
-    padding-bottom: 30px;
+.newCourse {
+  height: calc(100% - 30px);
+  min-height: 0;
+  padding-bottom: 30px;
+}
+@media (max-width: 991.98px) {
+  .sliderBox {
+    width: calc(100% - var(--big) - var(--big));
+  }
+}
+@media (max-width: 575.98px) {
+  .dropdown-toggle
+  {
+    text-align: right !important;
+  }
+.avatar {
+  float: none !important;
+}
 }

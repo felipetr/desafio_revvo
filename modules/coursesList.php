@@ -32,6 +32,7 @@ for ($i = 0; $i < count($results); $i++) {
                         <div class="courseCardContent text-secondary mb-3">
                             <?php echo $course['text']; ?>
                         </div>
+                        <div class="courseCardFooter">&nbsp;</div>
                         <a class="courseslink" href="<?php
                                             echo distUrl() .'curso/'. $course['slug'];
                                             ?>">VER CURSO</a>

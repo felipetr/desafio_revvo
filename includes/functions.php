@@ -99,7 +99,7 @@ function loadContent($url)
     $modules = array(
         '' => 'homePage',
         'profile' => 'profilePage',
-        'curso/$1' => 'cursoPage'
+        'curso/$1' => 'coursePage'
     );
 
     if (array_key_exists($url, $modules)) {
