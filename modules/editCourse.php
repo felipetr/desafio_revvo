@@ -2,15 +2,13 @@
 // editCourse
 checkLogin();
 
-$props = getUrlArray($_GET['url']);
-
 $imagesize = array(
     'width' => 1200,
     'height' => 400,
     'target' => 'destaquebox'
 );
 getModule('ImageUploadModal', $imagesize);
-
+$props = getUrlArray($_GET['url']);
 $slug = $props[0];
 
 $pdo = connectServer();
@@ -19,7 +17,8 @@ $curso = getCursoBySlug($slug, $pdo);
 
 
 ?>
-<script src="https://cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.js"></script>
+<script src="https://cdn.tiny.cloud/1/<?php echo getenv('TINYMCE_KEY') ?>/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
 
 
 
@@ -28,29 +27,34 @@ $curso = getCursoBySlug($slug, $pdo);
 
 
     <form id="editCourseForm">
-        <div class="row">
-            <div class="col-12 col-md-10">
+        
                 <h1 class="title-page medium-gray-color toUpper">// Editar Curso <small><i class="fas fa-chevron-right"></i> <?php echo $curso['title']; ?></small></h1>
                 <hr class="separator">
-                <h2 id="editable" class="title-page medium-gray-color ret toUpper h2editable" contenteditable="true"></h2>
-                <input required type="hidden" id="hiddenInput" name="title">
+                <h4 class="title-page medium-gray-color toUpper">// Título:</h4>
+                <div class="text-secondary"> <i class="fas fa-info"></i> Clique no título para editar</div>
+                <h2 id="editable" class="title-page medium-gray-color ret toUpper h2editable" contenteditable="true"><?php echo $curso['title'] ?></h2>
+                 <input value="<?php echo $curso['title'] ?>" required type="hidden" name="title">
 
                 <hr>
                 <h4 class="title-page medium-gray-color toUpper">// Resumo</h4>
-                <textarea name="text" class="richtext"></textarea>
-
+                <textarea name="text" id="richtext" class="richtext"><?php echo $curso['text'] ?></textarea>
+                <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                loadRichText('#richtext');
+                            });
+                        </script>
                 <hr>
                 <h4 class="title-page medium-gray-color toUpper">// Imagem de Destaque</h4>
 
                 <div id="destaquebox">
                     <div>
-                        <input name="image" type="hidden" id="imgUrl" class="imgUrl" value="default.png">
+                        <input name="image" type="hidden" id="imgUrl" class="imgUrl" value="<?php echo $curso['image'] ?>">
                     </div>
-                    <img id="destaqueimg" class="destaqueimg w-100 border border-secondary loader imgCropped" src="<?php echo resizeImage(baseUrl() . 'uploads/' . 'default.png', 1200, 400) ?>" alt="avatar">
+                    <img id="destaqueimg" class="destaqueimg w-100 border border-secondary loader imgCropped" src="<?php echo resizeImage(baseUrl() . 'uploads/' . $curso['image'], 1200, 400) ?>" alt="avatar">
 
                 </div>
                 <div class="p-3 text-center">
-                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#imageUploadModal"> Mudar Imagem </button>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#imageUploadModal"> Selecionar Imagem </button>
                 </div>
 
                 <hr>
@@ -78,17 +82,17 @@ $curso = getCursoBySlug($slug, $pdo);
                     $moduleCount = 0;
                     foreach ($contentArr as $index => $modulo) {
                         $moduleCount = $index;
-                        $title = $modulo->title;
-                        $content = $modulo->content;
+                        $moduletitle = $modulo->title;
+                        $modulecontent = $modulo->content;
                     ?>
 
                         <div id="modulo<?php echo $index; ?>" class="alert alert-secondary modulobox">
                             <div class="pb-3">Título:
-                                <input required type="text" class="form-control" name="modulo_title[]">
+                                <input value="<?php echo $moduletitle ?>" required type="text" class="form-control" name="modulo_title[]">
                             </div>
-                            
+
                             Conteúdo:
-                            <textarea required name="modulo_content[]" class="richtext" id="rt<?php echo $index; ?>"><?php echo $content; ?></textarea>
+                            <textarea name="modulo_content[]" class="richtext" id="richtext<?php echo $index; ?>"><?php echo $modulecontent; ?></textarea>
 
                             <div class="text-center p-3">
                                 <button type="button" id="deletamodulo<?php echo $index; ?>'" class="btn btn-danger deletamodulo">
@@ -96,26 +100,24 @@ $curso = getCursoBySlug($slug, $pdo);
                             </div>
                         </div>
 
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                loadRichText('#richtext<?php echo $index; ?>');
+                            });
+                        </script>
                     <?php
                     }
 
                     ?>
+
                 </div>
                 <div class="text-center p-4">
                     <button type="button" id="addModulo" class="btn btn-dark"><i class="fas fa-plus"></i> Adicionar Módulo</button>
                 </div>
-            </div>
-            <div class="col-12 d-none d-md-block col-md-2">
-                <div class="p-fixed">
-                    <button type="submit" class="btn btn-dark d-block w-100">Salvar</button>
-                    <div id="editCoursemsg"></div>
-
-                </div>
-            </div>
-        </div>
-        <div class="p-3 text-center d-block d-md-none">
-            <button type="submit" class="btn btn-dark d-block w-100">Salvar</button>
-        </div>
+            <hr>
+            <button type="submit" class="btn mb-3 btn-dark d-block w-100">Salvar</button>
+            <div id="editCoursemsg"></div>
+       
     </form>
 
 </div>
@@ -130,59 +132,35 @@ $curso = getCursoBySlug($slug, $pdo);
         editCourseForm.addEventListener("submit", function(event) {
             event.preventDefault();
 
-            const formData = new FormData(updateProfileForm);
+            const formData = new FormData(editCourseForm);
+            formData.append('slug', '<?php echo $curso['slug']; ?>');
 
-         
+
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', serverPath + "includes/updateCourse.php", true);
+            xhr.open('POST', serverPath + "includes/courses/updateCourse.php", true);
             xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
             xhr.onload = function() {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     const response = JSON.parse(xhr.responseText);
                     if (response.success) {
-                        editCoursemsg.innerHTML = '<div class="alert alert-success">Informações salvas com sucesso!</div>';
+
+                        slug = response.slug;
+                        editCoursemsg.innerHTML = '<div class="alert alert-success">Curso editado com sucesso</div>';
+                    
 
                     } else {
                         editCoursemsg.innerHTML = '<div class="alert alert-danger">' + response.msg + '</div>';
-                    }
+                               }
                 } else {
                     editCoursemsg.innerHTML = '<div class="alert alert-danger">Erro ao salvar dados</div>';
-                }
+                       }
             };
             xhr.send(formData);
         });
 
 
-        function loadCK(el) {
-            if (el.tagName !== 'TEXTAREA') {
-                console.error('O elemento deve ser um textarea.');
-                return;
-            }
 
-
-            ClassicEditor
-                .create(el, {
-                    language: 'pt-br'
-                })
-                .then(editor => {
-                    console.log(editor);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        }
-
-
-        function loadCKtoAll(textareas) {
-            for (const textarea of textareas) {
-                loadCK(textarea);
-            }
-        }
-
-        const textareas = document.querySelectorAll('.richtext');
-
-        loadCKtoAll(textareas);
 
         function handleDeleteClick(event) {
             if (event.target.classList.contains('deletamodulo')) {
@@ -195,71 +173,25 @@ $curso = getCursoBySlug($slug, $pdo);
 
         document.addEventListener('click', handleDeleteClick);
 
+        var moduleCount = <?php echo $moduleCount; ?>;
         var addModulo = document.getElementById("addModulo");
         addModulo.addEventListener("click", function(event) {
-            generateNewModule();
-        });
-
-        function deletamodulo(id) {
-
-
-        }
-        var moduleCount = <?php echo $moduleCount; ?>;
-
-
-        function generateNewModule() {
-
             moduleCount++;
-            var newModulo = '<div id="modulo' + moduleCount + '" class="alert alert-secondary modulobox">' +
-                '<div class="pb-3">Título: <input required type="text" class="form-control" ' +
-                'name="modulo_title[]"></div>Conteúdo:<textarea required name="modulo_content[]" ' +
-                'class="richtext" id="rt' + moduleCount + '"></textarea>' +
-                '<div class="text-center p-3">' +
-                '<button type="button" ' +
-                'id="deletamodulo' + moduleCount + '" class="btn btn-danger deletamodulo">' +
-                '<i class="fas fa-trash"></i>Remover Módulo</button></div></div>';
+
+            document.getElementById('modulesbox').appendChild(generateNewModule(moduleCount));
+
+            var newrichtext = document.getElementById('richtext' + moduleCount);
+
+            setTimeout(function() {
 
 
-            var modulesbox = document.getElementById("modulesbox");
-
-            var newEl = document.createElement('div');
-
-            newEl.innerHTML = newModulo;
+                loadRichText('#richtext' + moduleCount);
 
 
 
-            modulesbox.appendChild(newEl);
-            []
+            }, 100);
 
-            var textarea = document.getElementById('rt' + moduleCount);
-
-            function loadCK(el) {
-                if (el.tagName !== 'TEXTAREA') {
-                    console.error('O elemento deve ser um textarea.');
-                    return;
-                }
-
-
-                ClassicEditor
-                    .create(el, {
-                        language: 'pt-br'
-                    })
-                    .then(editor => {
-                        console.log(editor);
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
-            }
-
-            loadCK(textarea);
-
-
-
-
-        }
-
-
+        });
 
         const h2Editable = document.getElementById('editable');
 
@@ -274,5 +206,9 @@ $curso = getCursoBySlug($slug, $pdo);
             const hiddenInput = document.getElementById('hiddenInput');
             hiddenInput.value = h2Editable.innerText;
         });
+
+
+        loadRichText('.richtext');
+
     });
 </script>

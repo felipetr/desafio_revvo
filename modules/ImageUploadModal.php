@@ -41,11 +41,7 @@
 
     fileFormBtn.addEventListener('click', function() {
         fileInput.click();
-        const uploadForm = document.getElementById('uploadForm');
-        const loader = document.getElementById('loader');
         
-        uploadForm.style.display = "none";
-        loader.style.display = "block";
 
     });
 
@@ -63,12 +59,16 @@
       
         var loading = false;
     function submitForm() {
+        
         const form = document.getElementById('uploadForm');
         const fileInput = document.getElementById('fileInput');
         const file = fileInput.files[0];
         const statusElement = document.getElementById('status');
         const uploadForm = document.getElementById('uploadForm');
         const loader = document.getElementById('loader');
+        uploadForm.style.display = "none";
+        loader.style.display = "block";
+        
         loading = true;
         
         
