@@ -6,7 +6,7 @@ if (session_status() === PHP_SESSION_NONE || !isset($_SESSION['user'])) {
 }
 
 
-include('connect.php');
+include('../connect.php');
 
 
 $id = $_SESSION['user']['id'];

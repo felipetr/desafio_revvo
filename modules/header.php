@@ -12,7 +12,7 @@
                             $title = getTitle($url);
                             if (strstr($url, '/')) {
                                 $urlArr = explode('/', $url);
-                                if ($urlArr[0] == 'curso') {
+                                if (in_array($urlArr[0], ['curso', 'edit-curso'])) {
                                     $course = getCourseDataBySlug($urlArr[1]);
                                     $title .= " | " . $course['title'];
                                 }

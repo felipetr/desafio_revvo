@@ -33,6 +33,26 @@ Você pode visualizar um exemplo do Desafio Revvo em [https://desafiorevvo.felip
 
 - HTML
 - CSS (Bootstrap 5, SCSS)
-- JavaScript (Bootstrap 5, AJAX)
+- JavaScript (AJAX)
 - PHP (PDO, MySQL, Apache)
 - Gulp
+
+## Bibliotecas CDN Utilizadas
+
+- **Bootstrap** ^5.2.3
+- **FontAwesome** ^5.15.4
+- **CK Editor** ^35.2.0
+
+# Dependências
+
+## Dependências de Produção
+- **gulp:** ^5.0.0
+- **gulp-clean-css:** ^4.3.0
+
+## Dependências de Desenvolvimento
+- **gulp-autoprefixer:** ^9.0.0
+- **gulp-concat:** ^2.6.1
+- **gulp-sass:** ^5.1.0
+- **gulp-uglify:** ^3.0.2
+- **node-sass:** ^9.0.0
+- **sass:** ^1.75.0

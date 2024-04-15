@@ -4,6 +4,12 @@ checkLogin();
 ?><div class="container py-5">
     <h1 class="title-page medium-gray-color toUpper">// Cursos</h1>
     <hr class="separator">
+    <div class="alert alert-secondary text-end">
+        <a title="Novo Curso" href="<?php echo baseUrl() . 'novo-curso/'; ?>" class="btn btn-dark"><i class="fas fa-plus"></i> Novo Curso</a>
+
+    </div>
+    <hr class="separator">
+
     <div class="listCourses">
         <div class="row">
             <?php 

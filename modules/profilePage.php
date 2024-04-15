@@ -123,7 +123,7 @@ checkLogin();
             }
 
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', serverPath + "includes/updateProfile.php", true);
+            xhr.open('POST', serverPath + "includes/profile/updateProfile.php", true);
             xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
             xhr.onload = function() {
@@ -170,7 +170,7 @@ checkLogin();
             const formData = new FormData(updatePassForm);
 
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', serverPath + "includes/updatePass.php", true);
+            xhr.open('POST', serverPath + "includes/profile/updatePass.php", true);
             xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
             xhr.onload = function() {
