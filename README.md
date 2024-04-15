@@ -26,6 +26,7 @@ Você pode visualizar um exemplo do Desafio Revvo em [https://desafiorevvo.felip
 
 - Devido à estrutura de cursos, um botão "Veja mais cursos" foi adicionado ao layout, abaixo do módulo "Meus Cursos".
 - O controle de URL amigável pode ser observado no arquivo 'includes/modules.php'.
+- Gere uma chave de acesso ao tinymce e a informe no .env
 
 ## Estrutura de Pastas
 
