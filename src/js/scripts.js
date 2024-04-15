@@ -110,3 +110,47 @@ function decryptCredentials(encryptedCredentials) {
 
   return { email, password };
 }
+
+function loadRichText(el) {
+  tinymce.init({
+      selector: el,
+      height: 300,
+      plugins: [
+          'advlist autolink lists link image charmap print preview anchor',
+          'searchreplace visualblocks code fullscreen',
+          'insertdatetime media table paste code help wordcount'
+      ],
+      toolbar: 'undo redo | formatselect | ' +
+          'bold italic backcolor | alignleft aligncenter ' +
+          'alignright alignjustify | bullist numlist outdent indent | ' +
+          'removeformat | help',
+      content_css: '//www.tiny.cloud/css/codepen.min.css',
+      language: 'pt_BR',
+      setup: function (editor) {
+          editor.on('change', function () {
+              tinymce.triggerSave();
+          });
+      }
+  });
+}
+
+function generateNewModule(id) {
+
+  var moduloBox = document.createElement('div');
+  moduloBox.className = 'alert alert-secondary modulobox';
+
+  moduloBox.innerHTML = `
+<div class="pb-3">Título:
+  <input required type="text" class="form-control" name="modulo_title[]">
+</div>
+Conteúdo:
+<textarea name="modulo_content[]" id="richtext` + id + `"></textarea>
+<div class="text-center p-3">
+  <button type="button" class="btn btn-danger deletamodulo">
+      <i class="fas fa-trash"></i>Remover Módulo</button>
+</div>
+`;
+
+return moduloBox;
+
+}

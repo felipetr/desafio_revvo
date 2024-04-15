@@ -10,7 +10,8 @@ $imagesize = array(
 getModule('ImageUploadModal', $imagesize);
 
 ?>
-<script src="https://cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.js"></script>
+<script src="https://cdn.tiny.cloud/1/<?php echo getenv('TINYMCE_KEY') ?>/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
 
 
 
@@ -20,12 +21,15 @@ getModule('ImageUploadModal', $imagesize);
 
     <form id="newCourseForm">
         <div class="row">
-            <div class="col-12 col-md-10">
+       
                 <h1 class="title-page medium-gray-color toUpper">// Novo Curso</h1>
                 <hr class="separator">
+                <h4 class="title-page medium-gray-color toUpper">// Título:</h4>
+                <div class="text-secondary"> <i class="fas fa-info"></i> Clique no título para editar</div>
+             
                 <h2 id="editable" class="title-page medium-gray-color ret toUpper h2editable" contenteditable="true"></h2>
                 <input required type="hidden" id="hiddenInput" name="title">
-
+              
                 <hr>
                 <h4 class="title-page medium-gray-color toUpper">// Resumo</h4>
                 <textarea name="text" class="richtext"></textarea>
@@ -41,7 +45,7 @@ getModule('ImageUploadModal', $imagesize);
 
                 </div>
                 <div class="p-3 text-center">
-                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#imageUploadModal"> Mudar Imagem </button>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#imageUploadModal"> Selecionar Imagem </button>
                 </div>
 
                 <hr>
@@ -68,17 +72,10 @@ getModule('ImageUploadModal', $imagesize);
                 <div class="text-center p-4">
                     <button type="button" id="addModulo" class="btn btn-dark"><i class="fas fa-plus"></i> Adicionar Módulo</button>
                 </div>
-            </div>
-            <div class="col-12 d-none d-md-block col-md-2">
-                <div class="p-fixed">
-                    <button type="submit" class="btn btn-dark d-block w-100">Salvar</button>
-                    <div id="newCoursemsg"></div>
+            <hr>
+            <button type="submit" class="btn mb-3 btn-dark d-block w-100">Salvar</button>
+            <div id="newCoursemsg"></div>
 
-                </div>
-            </div>
-        </div>
-        <div class="p-3 text-center d-block d-md-none">
-            <button type="submit" class="btn btn-dark d-block w-100">Salvar</button>
         </div>
     </form>
 
@@ -96,18 +93,18 @@ getModule('ImageUploadModal', $imagesize);
 
             const formData = new FormData(newCourseForm);
 
-        
+
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', serverPath + "includes/createCourse.php", true);
+            xhr.open('POST', serverPath + "includes/courses/createCourse.php", true);
             xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
             xhr.onload = function() {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     const response = JSON.parse(xhr.responseText);
                     if (response.success) {
-                    
-                        slug = response.data.slug;
-                        window.location.href = "<?php echo baseUrl(); ?>edit-curso/"+slug;
+
+                        slug = response.slug;
+                        window.location.href = "<?php echo baseUrl(); ?>edit-curso/" + slug;
 
 
 
@@ -122,35 +119,7 @@ getModule('ImageUploadModal', $imagesize);
         });
 
 
-        function loadCK(el) {
-            if (el.tagName !== 'TEXTAREA') {
-                console.error('O elemento deve ser um textarea.');
-                return;
-            }
 
-
-            ClassicEditor
-                .create(el, {
-                    language: 'pt-br'
-                })
-                .then(editor => {
-                    console.log(editor);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        }
-
-
-        function loadCKtoAll(textareas) {
-            for (const textarea of textareas) {
-                loadCK(textarea);
-            }
-        }
-
-        const textareas = document.querySelectorAll('.richtext');
-
-        loadCKtoAll(textareas);
 
         function handleDeleteClick(event) {
             if (event.target.classList.contains('deletamodulo')) {
@@ -163,71 +132,25 @@ getModule('ImageUploadModal', $imagesize);
 
         document.addEventListener('click', handleDeleteClick);
 
+        var moduleCount = 0;
         var addModulo = document.getElementById("addModulo");
         addModulo.addEventListener("click", function(event) {
-            generateNewModule();
-        });
-
-        function deletamodulo(id) {
-
-
-        }
-        var moduleCount = 0;
-
-
-        function generateNewModule() {
-
             moduleCount++;
-            var newModulo = '<div id="modulo' + moduleCount + '" class="alert alert-secondary modulobox">' +
-                '<div class="pb-3">Título: <input required type="text" class="form-control" ' +
-                'name="modulo_title[]"></div>Conteúdo:<textarea required name="modulo_content[]" ' +
-                'class="richtext" id="rt' + moduleCount + '"></textarea>' +
-                '<div class="text-center p-3">' +
-                '<button type="button" ' +
-                'id="deletamodulo' + moduleCount + '" class="btn btn-danger deletamodulo">' +
-                '<i class="fas fa-trash"></i>Remover Módulo</button></div></div>';
 
+            document.getElementById('modulesbox').appendChild(generateNewModule(moduleCount));
 
-            var modulesbox = document.getElementById("modulesbox");
+            var newrichtext = document.getElementById('richtext' + moduleCount);
 
-            var newEl = document.createElement('div');
+            setTimeout(function() {
+                
+                
+                 loadRichText('#richtext' + moduleCount);
+              
 
-            newEl.innerHTML = newModulo;
+                
+            }, 100);
 
-
-
-            modulesbox.appendChild(newEl);
-            []
-
-            var textarea = document.getElementById('rt' + moduleCount);
-
-            function loadCK(el) {
-                if (el.tagName !== 'TEXTAREA') {
-                    console.error('O elemento deve ser um textarea.');
-                    return;
-                }
-
-
-                ClassicEditor
-                    .create(el, {
-                        language: 'pt-br'
-                    })
-                    .then(editor => {
-                        console.log(editor);
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
-            }
-
-            loadCK(textarea);
-
-
-
-
-        }
-
-
+        });
 
         const h2Editable = document.getElementById('editable');
 
@@ -242,5 +165,9 @@ getModule('ImageUploadModal', $imagesize);
             const hiddenInput = document.getElementById('hiddenInput');
             hiddenInput.value = h2Editable.innerText;
         });
+
+       
+        loadRichText('.richtext');
+        
     });
 </script>
