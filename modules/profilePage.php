@@ -86,8 +86,16 @@ checkLogin();
     <form id="updatePassForm" class="pb-3">
         <h2 class="title-page medium-gray-color toUpper">// ALTERAR SENHA</h2>
         <div class="row">
+          
+
             <div class="col-12 col-md-6">
-                <label for="pass" class="form-label medium-gray-color"><b>Senha<small class="text-danger">*</small>:</b></label>
+                <label for="pass" class="form-label medium-gray-color"><b>Senha Antiga<small class="text-danger">*</small>:</b></label>
+                <input placeholder="Digite a senha antiga..." value="" type="password" required class="form-control" id="oldpass" name="oldpass">
+
+            </div>
+
+            <div class="col-12 col-md-6">
+                <label for="pass" class="form-label medium-gray-color"><b>Nova Senha<small class="text-danger">*</small>:</b></label>
                 <input placeholder="Digite a senha..." value="" type="password" required class="form-control" id="pass" name="pass">
 
             </div>
@@ -97,30 +105,25 @@ checkLogin();
 
             </div>
         </div>
-        <div id="passmsg">
+        <div id="passmsg" class="mt-3">
 
         </div>
-        <button class="btn btn-dark d-block w-100">Salvar</button>
+        <button class="btn btn-dark d-block  w-100">Salvar</button>
     </form>
-    <div class="alert alert-secondary">
-        <pre><?php echo json_encode($user, JSON_PRETTY_PRINT); ?></pre>
-    </div>
+   
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const updateProfileForm = document.getElementById("updateProfileForm");
         const profilemsg = document.getElementById("profilemsg");
+   
 
         updateProfileForm.addEventListener("submit", function(event) {
             event.preventDefault();
 
             const formData = new FormData(updateProfileForm);
             
-            if(formData.pass != formData.pass2)
-            {
-                profilemsg.innerHTML = '<div class="alert alert-warning">Senhas nao coincidem!</div>';
-                exit;
-            }
+           
 
             const xhr = new XMLHttpRequest();
             xhr.open('POST', serverPath + "includes/profile/updateProfile.php", true);
@@ -130,7 +133,7 @@ checkLogin();
                 if (xhr.status >= 200 && xhr.status < 300) {
                     const response = JSON.parse(xhr.responseText);
                     if (response.success) {
-                        profilemsg.innerHTML = '<div class="alert alert-success">Mensagem salva com sucesso!</div>';
+                        profilemsg.innerHTML = '<div class="alert alert-success">Perfil atualizado com sucesso!</div>';
 
                         var wcMsg = 'Boas vindas';
                         if (response.data.gender) {
@@ -140,8 +143,7 @@ checkLogin();
                         welcomeheader.innerHTML = wcMsg;
                         if (response.data.avatar) {
                             const avatarheader = document.getElementById("avatar-header");
-                            const avatarprofile = document.getElementById("avatar-profile");
-                            avatarheader.src = avatarprofile.src;
+                            avatarheader.src = response.data.b64;
                         }
                         if (response.data.name) {
                             const nameheader = document.getElementById("name-header");
@@ -161,13 +163,23 @@ checkLogin();
 
         const updatePassForm = document.getElementById("updatePassForm");
         const passmsg = document.getElementById("passmsg");
+        const oldpass = document.getElementById("oldpass");
+        const pass = document.getElementById("pass");
+        const pass2 = document.getElementById("pass2");
 
         updatePassForm.addEventListener("submit", function(event) {
             event.preventDefault();
 
-
+           
+        
 
             const formData = new FormData(updatePassForm);
+
+            if(formData.pass != formData.pass2)
+            {
+                profilemsg.innerHTML = '<div class="alert alert-warning">Senhas nao coincidem!</div>';
+                exit;
+            }
 
             const xhr = new XMLHttpRequest();
             xhr.open('POST', serverPath + "includes/profile/updatePass.php", true);
@@ -177,7 +189,10 @@ checkLogin();
                 if (xhr.status >= 200 && xhr.status < 300) {
                     const response = JSON.parse(xhr.responseText);
                     if (response.success) {
-                        profilemsg.innerHTML = '<div class="alert alert-success">SEnha salva com sucesso!</div>';
+                        passmsg.innerHTML = '<div class="alert alert-success">Senha salva com sucesso!</div>';
+                        oldpass.value = '';
+                        pass.value = '';
+                        pass2.value = '';
                         const storedCredentials = localStorage.getItem("loginCredentials");
                         if (storedCredentials) {
                             const decryptedCredentials = decryptCredentials(storedCredentials);

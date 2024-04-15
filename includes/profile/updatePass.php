@@ -1,7 +1,8 @@
 <?php
 // updatePass
 
-if (session_status() === PHP_SESSION_NONE || !isset($_SESSION['user'])) {
+session_start();
+if (!isset($_SESSION['user'])) { 
   exit();
 }
 
@@ -14,7 +15,32 @@ $errorMsg = '';
 
 $pass = sha1(trim($_POST['pass']));
 $pass2 = sha1(trim($_POST['pass2']));
+$oldpass = sha1(trim($_POST['oldpass']));
 
+$bankpass = $_SESSION['user']['pass'];
+
+if($oldpass != $bankpass)
+{
+  $response = array(
+    'success' => false,
+    'msg' => 'Senha antiga não é válida!'
+  );
+
+  echo json_encode($response);
+  exit();
+}
+
+
+if($pass != $pass2)
+{
+  $response = array(
+    'success' => false,
+    'msg' => 'Senhas não coindidem!'
+  );
+
+  echo json_encode($response);
+  exit();
+}
 if($pass === $pass2 && $pass)
 {
 

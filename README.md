@@ -14,7 +14,6 @@ Este é o repositório do Desafio Revvo, desenvolvido por Felipe Travassos.
 
 Você pode visualizar um exemplo do Desafio Revvo em [https://desafiorevvo.felipetravassos.com](https://desafiorevvo.felipetravassos.com).
 
-
 ## Instruções de Configuração
 
 1. Execute o arquivo `desafio_revvo.sql` no seu banco de dados SQL para criar as tabelas necessárias.
@@ -52,17 +51,15 @@ Você pode visualizar um exemplo do Desafio Revvo em [https://desafiorevvo.felip
 ## Dependências
 
 ### Dependências de Produção
+
 - **gulp:** ^5.0.0
 - **gulp-clean-css:** ^4.3.0
 
 ### Dependências de Desenvolvimento
+
 - **gulp-autoprefixer:** ^9.0.0
 - **gulp-concat:** ^2.6.1
 - **gulp-sass:** ^5.1.0
 - **gulp-uglify:** ^3.0.2
 - **node-sass:** ^9.0.0
 - **sass:** ^1.75.0
-
-
-
-
