@@ -22,6 +22,8 @@ if (isset($_SESSION['user'])) {
     </div>
     <ul class="dropdown-menu dropdown-menu-end">
       <li><a class="dropdown-item" href="<?php echo baseUrl(); ?>profile"><i class="fas fa-user"></i> Perfil</a></li>
+      <li><a class="dropdown-item" href="<?php echo baseUrl(); ?>cursos/1"><i class="fas fa-graduation-cap"></i> Cursos</a></li>
+      <hr>
       <li><a class="dropdown-item" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
     </ul>
   </div>

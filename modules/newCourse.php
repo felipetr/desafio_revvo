@@ -28,7 +28,7 @@ getModule('ImageUploadModal', $imagesize);
                 <div class="text-secondary"> <i class="fas fa-info"></i> Clique no título para editar</div>
              
                 <h2 id="editable" class="title-page medium-gray-color ret toUpper h2editable" contenteditable="true"></h2>
-                <input required type="hidden" id="hiddenInput" name="title">
+                
               
                 <hr>
                 <h4 class="title-page medium-gray-color toUpper">// Resumo</h4>
@@ -86,13 +86,15 @@ getModule('ImageUploadModal', $imagesize);
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
+        const h2Editable = document.getElementById('editable');
         const newCourseForm = document.getElementById("newCourseForm");
         const newCoursemsg = document.getElementById("newCoursemsg");
         newCourseForm.addEventListener("submit", function(event) {
             event.preventDefault();
 
             const formData = new FormData(newCourseForm);
-
+           
+            formData.append('title', document.getElementById('editable').innerText)
 
             const xhr = new XMLHttpRequest();
             xhr.open('POST', serverPath + "includes/courses/createCourse.php", true);
@@ -152,19 +154,9 @@ getModule('ImageUploadModal', $imagesize);
 
         });
 
-        const h2Editable = document.getElementById('editable');
+      
 
-        h2Editable.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-            }
-        });
-
-        h2Editable.addEventListener('input', function() {
-
-            const hiddenInput = document.getElementById('hiddenInput');
-            hiddenInput.value = h2Editable.innerText;
-        });
+      
 
        
         loadRichText('.richtext');

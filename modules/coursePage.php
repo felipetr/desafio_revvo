@@ -6,6 +6,8 @@ $props = getUrlArray($_GET['url']);
 
 $pdo = connectServer();
 
+$slug = $props[0];
+
 $curso = getCursoBySlug($slug, $pdo);
 
 ?>
@@ -24,7 +26,7 @@ $curso = getCursoBySlug($slug, $pdo);
     <hr class="separator">
 
     <div class="alert alert-secondary text-end">
-        <button data-bs-toggle="modal" data-bs-target="#confirmModal" title="Excluir" type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Excluir</button>
+        <button data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" title="Excluir" type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Excluir</button>
         <a title="Editar" href="<?php echo baseUrl() . 'edit-curso/' . $curso['slug']; ?>" class="btn btn-dark"><i class="fas fa-edit"></i> Editar</a>
 
     </div>
@@ -102,7 +104,7 @@ confirmDelete.addEventListener("click", function(event) {
 		formData.append('slug', '<?php echo $curso['slug']; ?>');
 
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', serverPath + "includes/deleteCourse.php", true);
+            xhr.open('POST', serverPath + "includes/courses/deleteCourse.php", true);
             xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
             xhr.onload = function() {

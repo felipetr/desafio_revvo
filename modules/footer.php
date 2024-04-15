@@ -1,5 +1,11 @@
 <?php
 // footer
+
+
+
+getModule('firstModal');
+
+
 ?></div>
 <footer>
   <div class="footer">
@@ -75,21 +81,8 @@
 
 <script src="<?php echo baseUrl(); ?>assets/js/scripts.js?v=<?php echo time() ?>"></script>
 
-<?php
-
-?>
-
-<?php
-
-if (session_status() === PHP_SESSION_NONE) {
-  session_start();
-}
 
 
-if (isset($_SESSION['user'])) {
-  getModule('firstModal');
-}
-?>
 
 </body>
 

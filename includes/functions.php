@@ -98,6 +98,13 @@ function getModule($moduleName, $props = null)
 
 function resizeImage($imageUrl, $width, $height)
 {
+    
+    
+    if(!file_get_contents($imageUrl))
+    {
+        $imageUrl = baseUrl() . 'uploads/default.jpg';
+    }
+
     $image = imagecreatefromstring(file_get_contents($imageUrl));
     $originalWidth = imagesx($image);
     $originalHeight = imagesy($image);
