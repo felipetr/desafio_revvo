@@ -1,7 +1,8 @@
 <?php
 // createCourse
 
-if (session_status() === PHP_SESSION_NONE || !isset($_SESSION['user'])) {
+session_start();
+if (!isset($_SESSION['user'])) { 
   exit();
 }
 

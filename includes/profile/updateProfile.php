@@ -1,12 +1,15 @@
 <?php
 // updateProfile
 
-if (session_status() === PHP_SESSION_NONE || !isset($_SESSION['user'])) {
+
+session_start();
+if (!isset($_SESSION['user'])) { 
   exit();
 }
 
 
 include('../connect.php');
+include('../functions.php');
 
 
 $id = $_SESSION['user']['id'];
@@ -24,8 +27,10 @@ $stmt->bindParam(':id', $id);
 
 
 if ($stmt->execute()) {
+ 
 } else {
   $errorMsg .= 'Erro ao salvar o gênero/';
+ 
 }
 
 if ($name) {
@@ -51,6 +56,9 @@ if ($avatar) {
     $errorMsg .= 'Erro ao salvar o avatar/';
   }
 }
+
+$_POST['b64'] = resizeImage(baseUrl().'uploads/'.$_POST['avatar'], 43, 43);
+
 $response = array(
   'success' => true,
   'data' => $_POST
@@ -69,5 +77,6 @@ if ($errorMsg) {
     session_start();
   }
   $_SESSION['user'] = $stmt->fetch();
+
 }
 echo json_encode($response);
