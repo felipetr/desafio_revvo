@@ -15,7 +15,7 @@
 
         </div>
         <div class="col-12 col-md-3">
-         <h6 class="footerTitle">// CONTATO</h6>
+          <h6 class="footerTitle">// CONTATO</h6>
           <div class="contactTxt">
             (21) 98765-3434 <br>
             contato@leolearning.com
@@ -23,12 +23,12 @@
         </div>
 
         <div class="col-12 col-md-2">
-        <h6 class="footerTitle">// REDES SOCIAIS</h6>
-        <div class="socialIcons">
-        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-         <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
-        <a href="https://br.pinterest.com/"><i class="fab fa-pinterest-p"></i></a>
-  </div>
+          <h6 class="footerTitle">// REDES SOCIAIS</h6>
+          <div class="socialIcons">
+            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+            <a href="https://br.pinterest.com/"><i class="fab fa-pinterest-p"></i></a>
+          </div>
         </div>
       </div>
     </div>
@@ -74,6 +74,23 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 <script src="<?php echo baseUrl(); ?>assets/js/scripts.js?v=<?php echo time() ?>"></script>
+
+<?php
+
+?>
+
+<?php
+
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+
+
+if (isset($_SESSION['user'])) {
+  getModule('firstModal');
+}
+?>
+
 </body>
 
 </html>

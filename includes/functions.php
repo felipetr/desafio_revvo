@@ -219,3 +219,48 @@ function loadContent($url)
         exit;
     }
 }
+
+function createSlug($string, $table, $column, $pdo) {
+    $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $string)));
+
+    $query = "SELECT COUNT(*) AS total FROM $table WHERE $column = :slug";
+    $statement = $pdo->prepare($query);
+    $statement->execute(array(':slug' => $slug));
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if ($result['total'] > 0) {
+        $i = 1;
+        do {
+            $newSlug = $slug . '-' . $i;
+            $query = "SELECT COUNT(*) AS total FROM $table WHERE $column = :newSlug";
+            $statement = $pdo->prepare($query);
+            $statement->execute(array(':newSlug' => $newSlug));
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            $i++;
+        } while ($result['total'] > 0);
+
+        $slug = $newSlug;
+    }
+
+    return $slug;
+}
+
+function getCursoBySlug($slug, $pdo) {
+    try {
+
+        $sql = "SELECT * FROM cursos WHERE slug = :slug";
+
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->bindParam(':slug', $slug);
+
+        $stmt->execute();
+
+        $curso = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $curso;
+    } catch(PDOException $e) {
+
+        return null;
+    }
+}

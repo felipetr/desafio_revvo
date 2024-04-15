@@ -406,7 +406,10 @@ pb-30 {
   height: 100%;
   min-height: 0;
 }
-
+.p-fixed
+{
+  position: fixed;
+}
 .courseCard,
 .newCourse {
   height: calc(100% - 30px);
@@ -514,6 +517,22 @@ b
 {
   background-color: #e9ecef !important;
   color: var(--medium-gray) !important;
+}
+
+.h2editable::before
+{
+  content: '// ';
+}
+
+.h2editable:empty::after
+{
+  content: 'PREENCHA O NOME DO CURSO';
+  opacity: .3;
+}
+
+.h2editable:not(:empty)::after
+{
+  content: '' !important;
 }
 @media (max-width: 991.98px) {
   .sliderBox {

@@ -13,7 +13,7 @@ getModule('header');
 
 loadContent($url);
 
-getModule('firstModal'); 
+
 
 getModule('footer');
 

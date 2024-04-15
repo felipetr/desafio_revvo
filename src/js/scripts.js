@@ -1,16 +1,5 @@
 
 
-function showFirstModal()
-{
-    var modalCaller = document.getElementById("modalCaller");
-    modalCaller.click();
-}
-
-if (localStorage.getItem('modalShowed') === null) {
-    showFirstModal();
-    localStorage.setItem('modalShowed',true);
-}
-
 const loginForm = document.getElementById("loginForm");
 
 loginForm.addEventListener("submit", function (event) {
