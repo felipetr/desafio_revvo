@@ -1,5 +1,11 @@
 # Desafio Revvo - Felipe Travassos
 
+## Contato
+
+- **Email:** contato@felipetravassos.com
+- **Site:** [https://felipetravassos.com](https://felipetravassos.com)
+- **Telefone/Whatsapp:** (81) 9 9827.7376
+
 ## Introdução
 
 Este é o repositório do Desafio Revvo, desenvolvido por Felipe Travassos.
@@ -56,3 +62,7 @@ Você pode visualizar um exemplo do Desafio Revvo em [https://desafiorevvo.felip
 - **gulp-uglify:** ^3.0.2
 - **node-sass:** ^9.0.0
 - **sass:** ^1.75.0
+
+
+
+
