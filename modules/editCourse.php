@@ -30,10 +30,16 @@ $curso = getCursoBySlug($slug, $pdo);
         
                 <h1 class="title-page medium-gray-color toUpper">// Editar Curso <small><i class="fas fa-chevron-right"></i> <?php echo $curso['title']; ?></small></h1>
                 <hr class="separator">
+
+                <div class="alert alert-secondary text-end">
+        <a title="Visualizar" href="<?php echo baseUrl() . 'curso/' . $curso['slug']; ?>" class="btn btn-dark"><i class="fas fa-eye"></i> Visualizar</a>
+
+    </div>
+
                 <h4 class="title-page medium-gray-color toUpper">// Título:</h4>
                 <div class="text-secondary"> <i class="fas fa-info"></i> Clique no título para editar</div>
                 <h2 id="editable" class="title-page medium-gray-color ret toUpper h2editable" contenteditable="true"><?php echo $curso['title'] ?></h2>
-                 <input value="<?php echo $curso['title'] ?>" required type="hidden" name="title">
+               
 
                 <hr>
                 <h4 class="title-page medium-gray-color toUpper">// Resumo</h4>
@@ -129,10 +135,15 @@ $curso = getCursoBySlug($slug, $pdo);
 
         const editCourseForm = document.getElementById("editCourseForm");
         const editCoursemsg = document.getElementById("editCoursemsg");
+        const h2Editable = document.getElementById('editable');
+       
         editCourseForm.addEventListener("submit", function(event) {
             event.preventDefault();
 
             const formData = new FormData(editCourseForm);
+          
+           
+            formData.append('title', document.getElementById('editable').innerText);
             formData.append('slug', '<?php echo $curso['slug']; ?>');
 
 
@@ -193,19 +204,7 @@ $curso = getCursoBySlug($slug, $pdo);
 
         });
 
-        const h2Editable = document.getElementById('editable');
-
-        h2Editable.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-            }
-        });
-
-        h2Editable.addEventListener('input', function() {
-
-            const hiddenInput = document.getElementById('hiddenInput');
-            hiddenInput.value = h2Editable.innerText;
-        });
+        
 
 
         loadRichText('.richtext');

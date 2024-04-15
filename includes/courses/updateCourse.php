@@ -21,12 +21,12 @@ $modulosArr = [];
 
 foreach ($modulo_title as $index => $value) {
 
-  $title = $value;
-  $content = $modulo_content[$index];
+  $modulotitle = $value;
+  $modulocontent = $modulo_content[$index];
 
   $moduloObj = array(
-    'title' => $title,
-    'content' => $content
+    'title' => $modulotitle,
+    'content' => $modulocontent
   );
 
   array_push($modulosArr, $moduloObj);

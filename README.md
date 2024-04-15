@@ -46,7 +46,7 @@ Você pode visualizar um exemplo do Desafio Revvo em [https://desafiorevvo.felip
 
 - **Bootstrap** ^5.2.3
 - **FontAwesome** ^5.15.4
-- **CK Editor** ^35.2.0
+- **Tiny MCE** ^5.10.9
 
 ## Dependências
 
