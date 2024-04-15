@@ -43,13 +43,13 @@ Você pode visualizar um exemplo do Desafio Revvo em [https://desafiorevvo.felip
 - **FontAwesome** ^5.15.4
 - **CK Editor** ^35.2.0
 
-# Dependências
+## Dependências
 
-## Dependências de Produção
+### Dependências de Produção
 - **gulp:** ^5.0.0
 - **gulp-clean-css:** ^4.3.0
 
-## Dependências de Desenvolvimento
+### Dependências de Desenvolvimento
 - **gulp-autoprefixer:** ^9.0.0
 - **gulp-concat:** ^2.6.1
 - **gulp-sass:** ^5.1.0
