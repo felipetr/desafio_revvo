@@ -3,25 +3,25 @@
 ## Contato
 
 - **Email:** contato@felipetravassos.com
-- **Site:** [https://felipetravassos.com](https://felipetravassos.com){target="_blank"}
+- **Site:** [https://felipetravassos.com](https://felipetravassos.com){:target="_blank"}
 - **Telefone/Whatsapp:** (81) 9 9827.7376
 
 ## Introdução
 
 Este é o repositório do Desafio Revvo, desenvolvido por Felipe Travassos.
 
-Foram seguidas diretrizes disponíveis [nesse](https://bitbucket.org/leolearningbrasil/desafio-revvo){target="_blank"} repositório do BitBucket
+Foram seguidas diretrizes disponíveis [nesse](https://bitbucket.org/leolearningbrasil/desafio-revvo){:target="_blank"} repositório do BitBucket
 
 ## Visualização do Exemplo
 
-Você pode visualizar um exemplo [aqui](https://desafiorevvo.felipetravassos.com){target="_blank"}.
+Você pode visualizar um exemplo [aqui](https://desafiorevvo.felipetravassos.com){:target="_blank"}.
 
 ## Instruções de Configuração
 
 1. Execute o arquivo `desafio_revvo.sql` no seu banco de dados SQL para criar as tabelas necessárias.
 2. Verifique se a extensão GD está ativada no seu servidor PHP, pois é necessária para o processamento de imagens.
 3. Renomeie o arquivo `.env.example` para  `.env`.
-4. Gere uma chave de acesso ao [TinyMCE](https://www.tiny.cloud){target="_blank"}.
+4. Gere uma chave de acesso ao [TinyMCE](https://www.tiny.cloud){:target="_blank"}.
 5. Configure as informações de URL, Banco de Dados e a chave de acesso do TinyMCE no arquivo `.env` conforme as configurações do seu ambiente.
 6. O login padrão do usuário é `email@user.com` e a senha padrão é `pass`.
 
