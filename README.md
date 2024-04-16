@@ -10,16 +10,18 @@
 
 Este é o repositório do Desafio Revvo, desenvolvido por Felipe Travassos.
 
+Foram seguidas diretrizes disponíveis no repositório [Desafio Revvo] (https://bitbucket.org/leolearningbrasil/desafio-revvo) do BitBucket
+
 ## Visualização do Exemplo
 
-Você pode visualizar um exemplo do Desafio Revvo em [https://desafiorevvo.felipetravassos.com](https://desafiorevvo.felipetravassos.com).
+Você pode visualizar um exemplo do Desafio Revvo [aqui](https://desafiorevvo.felipetravassos.com).
 
 ## Instruções de Configuração
 
 1. Execute o arquivo `desafio_revvo.sql` no seu banco de dados SQL para criar as tabelas necessárias.
 2. Verifique se a extensão GD está ativada no seu servidor PHP, pois é necessária para o processamento de imagens.
 3. Renomeie o arquivo `.env.example` para  `.env`.
-4. Gere uma chave de acesso ao TinyMCE acessando [https://www.tiny.cloud](https://www.tiny.cloud).
+4. Gere uma chave de acesso ao TinyMCE [aqui](https://www.tiny.cloud).
 5. Configure as informações de URL, Banco de Dados e a chave de acesso do TinyMCE no arquivo `.env` conforme as configurações do seu ambiente.
 6. **Aviso:** O login padrão do usuário é "email@user.com" e a senha padrão é "pass".
 
