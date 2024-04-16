@@ -32,7 +32,7 @@ $sql = "SELECT * FROM cursos
         WHERE LOWER(title) LIKE :search
         OR LOWER(text) LIKE :search
         OR LOWER(content) LIKE :search
-        ORDER BY `createdDate`
+        ORDER BY `createdDate` DESC
         LIMIT :limit OFFSET :offset";
 
 $stmt = $conn->prepare($sql);
