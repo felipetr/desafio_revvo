@@ -20,8 +20,7 @@ Você pode visualizar um exemplo do Desafio Revvo em [https://desafiorevvo.felip
 2. Verifique se a extensão GD está ativada no seu servidor PHP, pois é necessária para o processamento de imagens.
 3. Renomeie o arquivo `.envDefault` para  `.env`.
 4. Configure as informações de URL e Banco de Dados no arquivo `.env` conforme as configurações do seu ambiente.
-5. Aponte o subdomínio para a pasta `dist/` para garantir o correto funcionamento da aplicação.
-6. **Aviso:** O login padrão do usuário é "email@user.com" e a senha padrão é "pass".
+5. **Aviso:** O login padrão do usuário é "email@user.com" e a senha padrão é "pass".
 
 ## Observações
 

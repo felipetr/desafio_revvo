@@ -32,8 +32,8 @@ function serverPath()
 {
    
     $baseUrl =  rtrim(getenv('BASE_URL'));
-    $urlWithoutProtocol = preg_replace('#^https?://#', '', $baseUrl);
-    if(strpos($urlWithoutProtocol, $baseUrl) === 0)
+    $completeUrl = 'http' . (empty($_SERVER['HTTPS']) ? '' : 's') . '://' . $_SERVER['HTTP_HOST'];
+    if(strpos($completeUrl, $baseUrl) === 0)
     {
         return '../';
     }else
