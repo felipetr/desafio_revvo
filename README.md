@@ -19,14 +19,14 @@ Você pode visualizar um exemplo do Desafio Revvo em [https://desafiorevvo.felip
 1. Execute o arquivo `desafio_revvo.sql` no seu banco de dados SQL para criar as tabelas necessárias.
 2. Verifique se a extensão GD está ativada no seu servidor PHP, pois é necessária para o processamento de imagens.
 3. Renomeie o arquivo `.env.example` para  `.env`.
-4. Configure as informações de URL e Banco de Dados no arquivo `.env` conforme as configurações do seu ambiente.
-5. **Aviso:** O login padrão do usuário é "email@user.com" e a senha padrão é "pass".
+4. Gere uma chave de acesso ao TinyMCE acessando [https://www.tiny.cloud](https://www.tiny.cloud).
+5. Configure as informações de URL, Banco de Dados e a chave de acesso do TinyMCE no arquivo `.env` conforme as configurações do seu ambiente.
+6. **Aviso:** O login padrão do usuário é "email@user.com" e a senha padrão é "pass".
 
 ## Observações
 
 - Devido à estrutura de cursos, um botão "Veja mais cursos" foi adicionado ao layout, abaixo do módulo "Meus Cursos".
 - O controle de URL amigável pode ser observado no arquivo 'includes/modules.php'.
-- Gere uma chave de acesso ao tinymce e a informe no .env
 
 ## Estrutura de Pastas
 
