@@ -10,11 +10,11 @@
 
 Este é o repositório do Desafio Revvo, desenvolvido por Felipe Travassos.
 
-Foram seguidas diretrizes disponíveis no repositório [Desafio Revvo] (https://bitbucket.org/leolearningbrasil/desafio-revvo) do BitBucket
+Foram seguidas diretrizes disponíveis no repositório [Desafio_Revvo] (https://bitbucket.org/leolearningbrasil/desafio-revvo) do BitBucket
 
 ## Visualização do Exemplo
 
-Você pode visualizar um exemplo do Desafio Revvo [aqui](https://desafiorevvo.felipetravassos.com).
+Você pode visualizar um exemplo [aqui](https://desafiorevvo.felipetravassos.com).
 
 ## Instruções de Configuração
 
