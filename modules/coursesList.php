@@ -35,7 +35,7 @@ $pagination['totalResults'] = $stmt->fetchColumn();
 
 
 $sql = "SELECT * FROM cursos
-        ORDER BY `createdDate`
+        ORDER BY `createdDate` DESC
         LIMIT :limit OFFSET :offset";
 
 $stmt = $conn->prepare($sql);

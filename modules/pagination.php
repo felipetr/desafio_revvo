@@ -3,7 +3,7 @@
 
 $localurl = explode('/', $props['gets']['url'])[0];
 unset($props['gets']['url']);
-$pageCount = floor($props['totalResults'] / $props['limit']);
+$pageCount = ceil($props['totalResults'] / $props['limit']);
 
 
 if ($props['totalResults'] >  $props['limit']) {
