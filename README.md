@@ -10,7 +10,7 @@
 
 Este é o repositório do Desafio Revvo, desenvolvido por Felipe Travassos.
 
-Foram seguidas diretrizes disponíveis nesse [repositório](https://bitbucket.org/leolearningbrasil/desafio-revvo) do BitBucket
+Foram seguidas diretrizes disponíveis [nesse](https://bitbucket.org/leolearningbrasil/desafio-revvo) repositório do BitBucket
 
 ## Visualização do Exemplo
 
