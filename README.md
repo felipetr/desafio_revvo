@@ -23,7 +23,7 @@ Você pode visualizar um exemplo [aqui](https://desafiorevvo.felipetravassos.com
 3. Renomeie o arquivo `.env.example` para  `.env`.
 4. Gere uma chave de acesso ao [TinyMCE](https://www.tiny.cloud).
 5. Configure as informações de URL, Banco de Dados e a chave de acesso do TinyMCE no arquivo `.env` conforme as configurações do seu ambiente.
-6. O login padrão do usuário é **email@user.com** e a senha padrão é **pass**.
+6. O login padrão do usuário é `email@user.com` e a senha padrão é `pass`.
 
 ## Observações
 
