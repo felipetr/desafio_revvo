@@ -36,10 +36,16 @@ Você pode visualizar um exemplo do Desafio Revvo em [https://desafiorevvo.felip
 
 ## Tecnologias Utilizadas
 
-- HTML
-- CSS (Bootstrap 5, SCSS)
-- JavaScript (AJAX)
-- PHP (PDO, MySQL, Apache)
+### Front-end:
+- HTML5
+- CSS3 (Bootstrap 5, SCSS)
+- JavaScript (Bootstrap 5,AJAX)
+
+### Back-end:
+- PHP (PDO, Apache)
+- SQL(MariaDB)
+
+### Ferramentas:
 - Gulp
 
 ## Bibliotecas CDN Utilizadas
