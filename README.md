@@ -33,7 +33,6 @@ Você pode visualizar um exemplo do Desafio Revvo em [https://desafiorevvo.felip
 - `dist/`: Contém os arquivos estáticos da aplicação, incluindo HTML, CSS, JavaScript, imagens, etc.
 - `includes/`: Contém arquivos PHP incluídos pela aplicação, como funções auxiliares, configurações, etc.
 - `modules/`: Contém arquivos PHP que podem ser importados visualmente em outros módulos.
-- `uploads/`: Pasta onde os uploads de imagens são armazenados.
 
 ## Tecnologias Utilizadas
 
