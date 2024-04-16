@@ -29,6 +29,8 @@ Você pode visualizar um exemplo [aqui](https://desafiorevvo.felipetravassos.com
 
 - Devido à estrutura de cursos, um botão "Veja mais cursos" foi adicionado ao layout, abaixo do módulo "Meus Cursos".
 - O controle de URL amigável pode ser observado no arquivo 'includes/modules.php'.
+- O formulário de pesquisa redireciona para uma página `search` que procura o que foi pesquisado no título ou no conteúdo do curso.
+- Adicionei uma tela de gerenciamento de perfil `profile`, onde é possível alterar o avatar, gênero, nome e senha do usuário.
 
 ## Estrutura de Pastas
 
